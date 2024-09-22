@@ -12,14 +12,16 @@ const AppointmentInfo = ({ appointment, onDeleteAppointment }) => {
       </button>
       <div className="flex-grow">
         <div className="flex items-center">
-          <span className="flex-none font-medium text-2xl text-blue-500">
-            {appointment.petName}
+          <span className="flex-none font-medium text-2xl text-gray-400">
+            {appointment.clientName}
           </span>
-          <span className="flex-grow text-right">{appointment.aptDate}</span>
+          <span className="flex-grow text-right font-me text-blue-400">
+            {appointment.aptDate}
+          </span>
         </div>
         <div>
-          <b className="font-bold text-blue-500">Owner:</b>{" "}
-          {appointment.ownerName}
+          <b className="font-medium text-lime-600">Company:</b>{" "}
+          {appointment.companyName}
         </div>
         <div className="leading-tight">{appointment.aptNotes}</div>
       </div>

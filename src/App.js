@@ -7,13 +7,23 @@ import { useEffect, useState } from "react";
 function App() {
   const [appointentList, setAppointentList] = useState([]);
   const [query, setQuery] = useState("");
-  const filterAppointments = appointentList.filter((item) => {
-    return (
-      item.petName.toLowerCase().includes(query.toLowerCase()) ||
-      item.ownerName.toLowerCase().includes(query.toLowerCase()) ||
-      item.aptNotes.toLowerCase().includes(query.toLowerCase())
-    );
-  });
+  const [sortBy, setSortBy] = useState("clientName");
+  const [orderBy, setOrderBy] = useState("asc");
+
+  const filterAppointments = appointentList
+    .filter((item) => {
+      return (
+        item.clientName.toLowerCase().includes(query.toLowerCase()) ||
+        item.ownerName.toLowerCase().includes(query.toLowerCase()) ||
+        item.aptNotes.toLowerCase().includes(query.toLowerCase())
+      );
+    })
+    .sort((a, b) => {
+      const order = orderBy === "asc" ? 1 : -1;
+      return a[sortBy].toLowerCase() < b[sortBy].toLowerCase()
+        ? -1 * order
+        : 1 * order;
+    });
 
   useEffect(() => {
     fetch("http://localhost:3000/data.json")
@@ -32,9 +42,9 @@ function App() {
   }
 
   return (
-    <div className="App container mx-auto mt-3 font-thin">
+    <div className="App container mx-auto mt-3 font-thin p-4">
       <h1 className="text-5xl mb-3">
-        <BiCalendar className="inline-block text-red-400 align-top" />
+        <BiCalendar className="inline-block text-yellow-500 align-top" />
         Your Appointments
       </h1>
       <AddAppointment />

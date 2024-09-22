@@ -11,8 +11,8 @@ const AddAppointment = () => {
     <div>
       <button
         onClick={handleToggle}
-        className={`bg-blue-400 text-white px-2 py-3 w-full text-left ${
-          toggleForm ? "rounded-md" : "rounded-t-md"
+        className={`bg-yellow-400 text-black px-2 py-3 w-full text-left ${
+          toggleForm ? "rounded-t-md" : "rounded-md"
         }`}
       >
         <div>
@@ -21,7 +21,7 @@ const AddAppointment = () => {
         </div>
       </button>
       {toggleForm && (
-        <div className="border-r-2 border-b-2 border-l-2 border-light-blue-500 rounded-b-md pl-4 pr-4 pb-4">
+        <div className="border-r-2 border-b-2 border-l-2 border-light-blue-500 rounded-b-md pt-4 pl-4 pr-4 pb-4">
           <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start  sm:pt-5">
             <label
               htmlFor="ownerName"
@@ -44,7 +44,7 @@ const AddAppointment = () => {
               htmlFor="petName"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Pet Name
+              Client Name
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input

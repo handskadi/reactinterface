@@ -1,3 +1,3 @@
 # Add Appointment Interface
 
-- A:n appointment Magment App.
+- An appointment Magment App.

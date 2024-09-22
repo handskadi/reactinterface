@@ -18,13 +18,13 @@ const DropDown = ({ toggle }) => {
           className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
           role="menuitem"
         >
-          Pet Name <BiCheck />
+          Client Name <BiCheck />
         </div>
         <div
           className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
           role="menuitem"
         >
-          Owner Name <BiCheck />
+          Company Name <BiCheck />
         </div>
         <div
           className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex justify-between cursor-pointer"
@@ -76,7 +76,7 @@ const Search = ({ onQueryChange, query }) => {
               onClick={() => {
                 setToggleDropDown(!toggleDropDown);
               }}
-              className="justify-center px-4 py-2 bg-blue-400 border-2 border-blue-400 text-sm text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center"
+              className="justify-center px-4 py-2 bg-yellow-400 border-2 border-yellow-400 text-sm text-black hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center"
               id="options-menu"
               aria-haspopup="true"
               aria-expanded="true"
