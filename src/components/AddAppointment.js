@@ -1,10 +1,31 @@
 import { useState } from "react";
 import { BiCalendarPlus } from "react-icons/bi";
 
-const AddAppointment = () => {
+const AddAppointment = ({ onSendAppointment, lastID }) => {
   const [toggleForm, setToggleForm] = useState(false);
+  const clearForm = {
+    clientName: "",
+    companyName: "",
+    aptDate: "",
+    aptTime: "",
+    aptNotes: "",
+  };
+  const [formData, setFormData] = useState(clearForm);
 
   function handleToggle() {
+    setToggleForm(!toggleForm);
+  }
+
+  function formDataPublish() {
+    const newAppointmentInfo = {
+      const: lastID + 1,
+      clientName: formData.clientName,
+      companyName: formData.companyName,
+      aptDate: formData.aptDate + " " + formData.aptTime,
+      aptNotes: formData.aptNotes,
+    };
+    onSendAppointment(newAppointmentInfo);
+    setFormData(clearForm);
     setToggleForm(!toggleForm);
   }
   return (
@@ -27,10 +48,14 @@ const AddAppointment = () => {
               htmlFor="ownerName"
               className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Owner Name
+              Company Name
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
+                onChange={(e) => {
+                  setFormData({ ...formData, companyName: e.target.value });
+                }}
+                value={formData.companyName}
                 type="text"
                 name="ownerName"
                 id="ownerName"
@@ -48,6 +73,10 @@ const AddAppointment = () => {
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
+                onChange={(e) => {
+                  setFormData({ ...formData, clientName: e.target.value });
+                }}
+                value={formData.clientName}
                 type="text"
                 name="petName"
                 id="petName"
@@ -65,6 +94,10 @@ const AddAppointment = () => {
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
+                onChange={(e) => {
+                  setFormData({ ...formData, aptDate: e.target.value });
+                }}
+                value={formData.aptDate}
                 type="date"
                 name="aptDate"
                 id="aptDate"
@@ -82,6 +115,10 @@ const AddAppointment = () => {
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <input
+                onChange={(e) => {
+                  setFormData({ ...formData, aptTime: e.target.value });
+                }}
+                value={formData.aptTime}
                 type="time"
                 name="aptTime"
                 id="aptTime"
@@ -99,6 +136,10 @@ const AddAppointment = () => {
             </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
               <textarea
+                onChange={(e) => {
+                  setFormData({ ...formData, aptNotes: e.target.value });
+                }}
+                value={formData.aptNotes}
                 id="aptNotes"
                 name="aptNotes"
                 rows="3"
@@ -113,6 +154,7 @@ const AddAppointment = () => {
               <button
                 type="submit"
                 className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-400 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+                onClick={formDataPublish}
               >
                 Submit
               </button>
